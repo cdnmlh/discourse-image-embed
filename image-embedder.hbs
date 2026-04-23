@@ -1,0 +1,42 @@
+<DModal 
+  @title="Embed an Image" 
+  @closeModal={{@closeModal}}
+  class="image-embedder-modal"
+>
+  <:body>
+    <div class="control-group">
+      <label for="image-url">Image URL</label>
+      <Input 
+        @type="text" 
+        @value={{this.imageUrl}} 
+        id="image-url" 
+        placeholder="https://example.com/image.png"
+        autofocus="autofocus"
+      />
+    </div>
+    <div class="control-group">
+      <label for="image-alt">Alt Text (Optional)</label>
+      <Input 
+        @type="text" 
+        @value={{this.altText}} 
+        id="image-alt" 
+        placeholder="Description of the image"
+      />
+    </div>
+  </:body>
+
+  <:footer>
+    <DButton 
+      @label="Insert Image" 
+      @action={{this.insertImage}} 
+      @icon="plus" 
+      class="btn-primary" 
+      @disabled={{this.isInvalid}}
+    />
+    <DButton 
+      @label="Cancel" 
+      @action={{@closeModal}} 
+      class="btn-flat" 
+    />
+  </:footer>
+</DModal>
