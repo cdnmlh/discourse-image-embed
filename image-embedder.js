@@ -6,19 +6,13 @@ export default class ImageEmbedderController extends Controller {
   @tracked imageUrl = "";
   @tracked altText = "";
 
-  get isInvalid() {
-    return !this.imageUrl.startsWith("http");
-  }
-
   @action
   insertImage() {
     const description = this.altText || "image";
     const markdown = `![${description}](${this.imageUrl})`;
     
-    // Send the markdown back to the composer
+    // This model was passed from the 'show' call in the initializer
     this.model.toolbarEvent.addText(markdown);
-    
-    // Close the modal
     this.closeModal();
   }
 }
